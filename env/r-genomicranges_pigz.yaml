@@ -1,0 +1,10 @@
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bioconductor-genomicranges=1.38.0
+  - r-base=3.6.3
+  - r-data.table=1.12.8
+  - r-r.utils=2.10.1
+  - r-yaml=2.2.0
+  - pigz=2.5

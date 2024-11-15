@@ -1,0 +1,131 @@
+#
+#  Global parameters
+#
+
+paths:
+  projectpath: /home/ajank/TransContactHiC
+  datadir: data
+  genomedatadir: data/genome
+  resultsdir: results
+  configdir: config
+  envdir: env
+  tmpdir: tmp
+  srcdir: src
+  shellsrcdir: src/sh
+  pysrcdir: src/python
+  Rsrcdir: src/R
+  snakemakesrcdir: src/snakemake
+
+#
+#  Genome files
+#
+
+genomes:
+  "D_mel": {
+    symbol: "dmel_r6.36",
+    chromosomes: "2L 2R 3L 3R 4 X Y",
+    fasta: "data/genome/D.melanogaster/dm6/dmel_r6.36_FB2020_05/fasta/dmel-all-chromosome-r6.36.fasta",
+    chrom_sizes: "data/genome/D.melanogaster/dm6/dmel_r6.36_FB2020_05/fasta/dmel-all-chromosome-r6.36.chrom.sizes"
+  }
+
+#
+#  Hi-C data analysis
+#
+
+haplotype_HiC:
+  datadir: data/haplotype_HiC
+  barcodedfastqdir: data/haplotype_HiC/barcoded_fastq
+  fastqdir: data/haplotype_HiC/fastq
+  bamdir: data/haplotype_HiC/bam
+  bigwigdir: data/haplotype_HiC/bw
+  qcdir: data/haplotype_HiC/qc
+  filterThreshold: "-1.5 5"
+  datasets:
+    - "HiC_D_mel_DGRP-57_DGRP-439_WE_2-4h_Rep1"
+    - "HiC_D_mel_DGRP-57_DGRP-439_WE_2-4h_Rep2"
+    - "HiC_D_mel_DGRP-57_DGRP-439_maternal_WE_2-4h_Rep1"
+    - "HiC_D_mel_DGRP-57_DGRP-439_maternal_WE_2-4h_Rep2"
+    - "HiC_D_mel_DGRP-57_DGRP-439_paternal_WE_2-4h_Rep1"
+    - "HiC_D_mel_DGRP-57_DGRP-439_paternal_WE_2-4h_Rep2"
+    - "HiC_D_mel_DGRP-57_DGRP-439_PnM_Rep1"
+    - "HiC_D_mel_DGRP-57_DGRP-439_PnM_Rep2"
+    - "HiC_D_mel_DGRP-57_DGRP-439_maternal_PnM_Rep1"
+    - "HiC_D_mel_DGRP-57_DGRP-439_maternal_PnM_Rep2"
+    - "HiC_D_mel_DGRP-57_DGRP-439_paternal_PnM_Rep1"
+    - "HiC_D_mel_DGRP-57_DGRP-439_paternal_PnM_Rep2"
+  dataset_to_library_fastq:
+    {}
+  dataset_to_library_sra:
+    # DGRP-57 (maternal)/DGRP-439 (paternal), 2-4h embryo
+    "HiC_D_mel_DGRP-57_DGRP-439_WE_2-4h_Rep1":
+      - "SRR8058285" #  67,552,700  20.4G  10.5Gb  2018-10-17
+      - "SRR8058286" # 115,205,517  34.8G  16.4Gb  2018-10-17
+      - "SRR8058287" #  74,230,745  22.4G  12.0Gb  2018-10-17
+    "HiC_D_mel_DGRP-57_DGRP-439_WE_2-4h_Rep2":
+      - "SRR8058288" #  68,291,131  20.6G  10.7Gb  2018-10-17
+      - "SRR8058289" # 110,413,950  33.3G  15.8Gb  2018-10-17
+      - "SRR8058290" #  77,569,402  23.4G  12.6Gb  2018-10-17
+    # DGRP-57 (maternal)/DGRP-439 (paternal), `Pat and Mat' cell line
+    "HiC_D_mel_DGRP-57_DGRP-439_PnM_Rep1":
+      - "SRR8058291" #  76,408,718  23.1G  12.8Gb  2018-10-17
+      - "SRR8058292" # 150,009,040  45.3G  24.0Gb  2018-10-17
+      - "SRR8058293" # 147,646,721  44.6G  23.6Gb  2018-10-17
+    "HiC_D_mel_DGRP-57_DGRP-439_PnM_Rep2":
+      - "SRR8058294" #  77,146,182  23.3G  12.9Gb  2018-10-17
+      - "SRR8058295" # 153,980,270  46.5G  24.5Gb  2018-10-17
+      - "SRR8058296" # 152,482,071  46.0G  24.3Gb  2018-10-17
+  dataset_to_genome:
+    "HiC_D_mel_DGRP-57_DGRP-439_WE_2-4h": "D_mel"
+    "HiC_D_mel_DGRP-57_DGRP-439_maternal_WE_2-4h": "D_mel"
+    "HiC_D_mel_DGRP-57_DGRP-439_paternal_WE_2-4h": "D_mel"
+    "HiC_D_mel_DGRP-57_DGRP-439_PnM": "D_mel"
+    "HiC_D_mel_DGRP-57_DGRP-439_maternal_PnM": "D_mel"
+    "HiC_D_mel_DGRP-57_DGRP-439_paternal_PnM": "D_mel"
+  dataset_to_restrictionEnzyme:
+    "HiC_D_mel_DGRP-57_DGRP-439_WE_2-4h": "DpnII"
+    "HiC_D_mel_DGRP-57_DGRP-439_maternal_WE_2-4h": "DpnII"
+    "HiC_D_mel_DGRP-57_DGRP-439_paternal_WE_2-4h": "DpnII"
+    "HiC_D_mel_DGRP-57_DGRP-439_PnM": "DpnII"
+    "HiC_D_mel_DGRP-57_DGRP-439_maternal_PnM": "DpnII"
+    "HiC_D_mel_DGRP-57_DGRP-439_paternal_PnM": "DpnII"
+  restrictionEnzyme_to_restrictionSequence:
+    "MboI+MseI": "GATC TTAA"
+    "DpnII": "GATC"
+    "MboI": "GATC"
+  restrictionEnzyme_to_danglingSequence:
+    "MboI+MseI": "GATC TAA"
+    "DpnII": "GATC"
+    "MboI": "GATC"
+  combined_dataset_to_dataset:
+    "HiC_D_mel_DGRP-57_DGRP-439_WE_2-4h":
+      - "HiC_D_mel_DGRP-57_DGRP-439_WE_2-4h_Rep1"
+      - "HiC_D_mel_DGRP-57_DGRP-439_WE_2-4h_Rep2"
+    "HiC_D_mel_DGRP-57_DGRP-439_maternal_WE_2-4h":
+      - "HiC_D_mel_DGRP-57_DGRP-439_maternal_WE_2-4h_Rep1"
+      - "HiC_D_mel_DGRP-57_DGRP-439_maternal_WE_2-4h_Rep2"
+    "HiC_D_mel_DGRP-57_DGRP-439_paternal_WE_2-4h":
+      - "HiC_D_mel_DGRP-57_DGRP-439_paternal_WE_2-4h_Rep1"
+      - "HiC_D_mel_DGRP-57_DGRP-439_paternal_WE_2-4h_Rep2"
+    "HiC_D_mel_DGRP-57_DGRP-439_PnM":
+      - "HiC_D_mel_DGRP-57_DGRP-439_PnM_Rep1"
+      - "HiC_D_mel_DGRP-57_DGRP-439_PnM_Rep2"
+    "HiC_D_mel_DGRP-57_DGRP-439_maternal_PnM":
+      - "HiC_D_mel_DGRP-57_DGRP-439_maternal_PnM_Rep1"
+      - "HiC_D_mel_DGRP-57_DGRP-439_maternal_PnM_Rep2"
+    "HiC_D_mel_DGRP-57_DGRP-439_paternal_PnM":
+      - "HiC_D_mel_DGRP-57_DGRP-439_paternal_PnM_Rep1"
+      - "HiC_D_mel_DGRP-57_DGRP-439_paternal_PnM_Rep2"
+  DGRP57_DGRP439_SNPs: "data/external_WGS/vcf/D_mel_DGRP-57_DGRP-439.SNPs.filter.tsv.gz"
+
+#
+#  Calling Single Nucleotide Variants from whole genome sequencing data
+#
+
+external_WGS:
+  genome: "D_mel"
+  dataset_to_library_sra:
+    # Genome sequencing of 192 inbred strains of Drosophila melanogaster to serve as a reference panel for the study of complex traits
+    "DGRP-57":
+      - "SRR933581" # 32,483,495  6.5G  3.2Gb  2013-07-11
+    "DGRP-439":
+      - "SRR835028" # 22,381,218  4.3G  1.6Gb  2013-04-25

@@ -1,0 +1,6 @@
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - cooler=0.8.11
+  - pandas=1.5.3
