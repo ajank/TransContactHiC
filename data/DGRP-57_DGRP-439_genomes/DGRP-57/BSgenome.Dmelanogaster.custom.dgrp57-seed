@@ -1,0 +1,16 @@
+Package: BSgenome.Dmelanogaster.custom.dgrp57
+Title: Drosophila melanogaster genome with DGRP-57 haplotype-specific SNPs
+Description: Drosophila melanogaster genome with DGRP-57 haplotype-specific SNPs
+Version: 1.0
+organism: Drosophila melanogaster
+common_name: fruit fly
+provider: custom
+provider_version: dm6
+release_date: Apr. 2023
+release_name: CustomDGRP57_1.0
+source_url: 
+organism_biocview: Drosophila_melanogaster
+BSgenomeObjname: Dmelanogaster57
+seqnames: c("chr2L", "chr2R", "chr3L", "chr3R", "chr4", "chrX", "chrY")
+circ_seqs: character(0)
+seqs_srcdir: /mnt/chr12/Data/magda/MultiWayHiC/data/DGRP-57_DGRP-439_genomes/DGRP-57
