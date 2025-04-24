@@ -301,7 +301,7 @@ rule vcf_extract_DGRP57_DGRP439:
 
 rule vcf_consensus_DGRP57_DGRP439:
   input:
-    "data/external_WGS/vcf/" + genome + "_DGRP-57_DGRP-439.SNPs.vcf.gz"
+    "data/external_WGS/vcf/" + genome + "_DGRP-57_DGRP-439.SNPs.filter.vcf.gz"
   output:
     "data/external_WGS/fasta/" + genome + "_DGRP-57_DGRP-439_{haplotype}.fa.gz"
   wildcard_constraints:
